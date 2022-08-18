@@ -19,6 +19,13 @@ document.getElementById('btn-withdraw').addEventListener('click',function(){
     const withdrawField = document.getElementById('withdraw-field');
     const newWithDrawAmountString = withdrawField.value;
     const newWithDrawAmount = parseFloat(newWithDrawAmountString);
+    // step-7
+    withdrawField.value = ''; 
+    })
+    if(isNaN(newWithDrawAmount)){
+        alert('please provide a valid number');
+        return;
+    }
     
     // step-3
     const withdrawTotalElement = document.getElementById('withdraw-total');
@@ -34,9 +41,11 @@ document.getElementById('btn-withdraw').addEventListener('click',function(){
     const previousBalanceTotalString = balanceTotalElement.innerText;
     const previousBalanceTotal = parseFloat(previousBalanceTotalString);
     
+    if(newWithDrawAmount > previousBalanceTotal){
+        alert('insuppociant balance');
+        return;
+    }
     // step-6
     const newBalanceTotal = previousBalanceTotal - newWithDrawAmount;
     balanceTotalElement.innerText = newBalanceTotal;
-    // step-7
-    withdrawField.value = ''; 
-    })
+    
